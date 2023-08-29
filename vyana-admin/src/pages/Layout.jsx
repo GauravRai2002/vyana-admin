@@ -5,6 +5,9 @@ import logo from '../assets/logo.png'
 import TimeComp from '../components/TimeComp'
 import List from '../components/List'
 import EditEvents from '../components/EditEvents'
+import MatchList from '../components/MatchList'
+import AddMatches from '../components/AddMatches'
+import EditMatch from '../components/EditMatch'
 
 function layout() {
     return (
@@ -35,10 +38,15 @@ function layout() {
 
                     <Routes>
                         <Route path='/' element={<List />} />
+                        <Route path='/matches' element={<MatchList />} />
                         <Route path='/add/CURR' element={<AddForm timing={'CURR'} />} />
                         <Route path='/add/NEXT' element={<AddForm timing={'NEXT'} />} />
                         <Route path='/edit/NEXT/*' element={<EditEvents timing={'NEXT'} />} />
                         <Route path='/edit/CURR/*' element={<EditEvents timing={'CURR'}/>} />
+                        <Route path='/edit/matches/NEXT/*' element={<EditMatch timing={'NEXT'} />} />
+                        <Route path='/edit/matches/CURR/*' element={<EditMatch timing={'CURR'}/>} />
+                        <Route path='/add/matches/CURR' element={<AddMatches timing={'CURR'}/>} />
+                        <Route path='/add/matches/NEXT' element={<AddMatches timing={'CURR'}/>} />
                     </Routes>
                 </div>
 
