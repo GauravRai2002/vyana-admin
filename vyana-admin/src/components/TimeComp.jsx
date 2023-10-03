@@ -11,7 +11,7 @@ function TimeComp({imageurl,e_name,e_id,timing}) {
                     <h2 className="card-title truncate">{e_name}</h2>
                     <p>{e_id}</p>
                     {timing!='PREV'?<div className="card-actions justify-end">
-                        <Link to={`/edit/${timing}/${e_id}`} ><button className="btn btn-alert btn-outline">Edit</button></Link>
+                        {/* <Link to={`/edit/${timing}/${e_id}`} ><button className="btn btn-alert btn-outline">Edit</button></Link> */}
                     </div>:<></>}
                 </div>
             </div>

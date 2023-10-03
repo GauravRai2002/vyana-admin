@@ -29,8 +29,8 @@ function List() {
                         return data.timing == 'NEXT' ? <TimeComp key={i} e_name={data.e_name} e_id={data.e_id} timing={data.timing} imageurl={data.e_logo} /> : <></>
                     })}
                 </div>
-                <div className='text-4xl font-bold'>
-                    PREVIOUS EVENTS
+                <div className='text-4xl font-bold flex items-center justify-between'>
+                    PREVIOUS EVENTS <Link to={'/add/PREV'}><button className="btn btn-info">ADD</button></Link>
                 </div>
                 <div className="flex flex-wrap items-center gap-0">
 
