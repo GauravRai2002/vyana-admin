@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function List() {
     const [allData, setAllData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8000/events').then(res => res.json()).then(result => setAllData(result))
+        fetch('https://vyana-sports-back-end.vercel.app/events').then(res => res.json()).then(result => setAllData(result))
     }, [])
 
 

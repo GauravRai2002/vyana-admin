@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function EditEvents({ timing }) {
-
+    
+    const navigate = useNavigate()
     const nameRef = useRef()
     // const timingRef = useRef()
     const [Timing,setTiming] = useState()
@@ -14,10 +16,13 @@ function EditEvents({ timing }) {
 
 
     useEffect(() => {
+        if (!localStorage.getItem('uid')) {
+            navigate('/login')
+        }
         const pathName = window.location.pathname
         const e_id = pathName.substring(pathName.lastIndexOf('/')+1,pathName.length)
         setEid(e_id)
-        fetch(`http://localhost:8000/events/${e_id}`, {
+        fetch(`https://vyana-sports-back-end.vercel.app/events/${e_id}`, {
             method: 'GET'
         }).then(res => {
             return res.json()
@@ -49,7 +54,7 @@ function EditEvents({ timing }) {
                 'timing': `${Timing}`
             }
             try {
-                fetch(`http://localhost:8000/edit/event/${eid}`, {
+                fetch(`https://vyana-sports-back-end.vercel.app/edit/event/${eid}`, {
                     method: 'PUT',
                     headers: {
                         Accept: 'application/json',
@@ -74,7 +79,7 @@ function EditEvents({ timing }) {
             }
 
             try {
-                fetch(`http://localhost:8000/edit/event/${eid}`, {
+                fetch(`https://vyana-sports-back-end.vercel.app/edit/event/${eid}`, {
                     method: 'PUT',
                     headers: {
                         Accept: 'application/json',
@@ -98,7 +103,7 @@ function EditEvents({ timing }) {
             }
 
             try {
-                fetch(`http://localhost:8000/edit/event/${eid}`, {
+                fetch(`https://vyana-sports-back-end.vercel.app/edit/event/${eid}`, {
                     method: 'PUT',
                     headers: {
                         Accept: 'application/json',
@@ -118,6 +123,8 @@ function EditEvents({ timing }) {
             setErr(true)
         }
     }
+
+
     return (
         <>
 

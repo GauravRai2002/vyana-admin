@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 function AddForm({ timing }) {
+    const navigate = useNavigate()
     const nameRef = useRef()
     const videoRef = useRef()
     var imageSource
@@ -35,7 +37,7 @@ function AddForm({ timing }) {
         const imgdata = new FileReader()
         imgdata.readAsDataURL(photoRef.current.files[0])
         imgdata.onloadend = () => {
-            fetch(`http://localhost:8000/upload`, {
+            fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
@@ -90,7 +92,7 @@ function AddForm({ timing }) {
             let fileReader2 = new FileReader();
             fileReader2.onloadend = function () {
                 try {
-                    fetch(`http://localhost:8000/upload`, {
+                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
@@ -121,7 +123,7 @@ function AddForm({ timing }) {
             let fileReader1 = new FileReader();
             fileReader1.onloadend = function () {
                 try {
-                    fetch(`http://localhost:8000/upload`, {
+                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
@@ -151,7 +153,7 @@ function AddForm({ timing }) {
             let fileReader = new FileReader();
             fileReader.onloadend = function () {
                 try {
-                    fetch(`http://localhost:8000/upload`, {
+                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
@@ -187,7 +189,7 @@ function AddForm({ timing }) {
             'videos': video
         }
         try {
-            fetch(`http://localhost:8000/add/events`, {
+            fetch(`https://vyana-sports-back-end.vercel.app/add/events`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -203,6 +205,12 @@ function AddForm({ timing }) {
             setErr(true)
         }
     }
+
+    useEffect(() => {
+        if (!localStorage.getItem('uid')) {
+            navigate('/login')
+        }
+    }, [])
 
 
     return (

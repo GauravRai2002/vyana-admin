@@ -1,12 +1,26 @@
-import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import AddForm from '../components/AddForm'
 import logo from '../assets/logo.png'
 import TimeComp from '../components/TimeComp'
 import List from '../components/List'
 import EditEvents from '../components/EditEvents'
+import Login from '../Login'
+import { auth } from '../firebase'
 
-function layout() {
+function Layout() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!localStorage.getItem('uid')) {
+            navigate('/login')
+        }
+    }, [])
+
+    const handleLogOut = () => {
+        auth.signOut()
+        localStorage.removeItem('uid')
+        navigate('/login')
+    }
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -23,7 +37,7 @@ function layout() {
                     </div>
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal">
-                            {/* Navbar menu content here */}
+                            <button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>
 
                         </ul>
                     </div>
@@ -33,11 +47,12 @@ function layout() {
 
                     <Routes>
                         <Route path='/' element={<List />} />
+                        <Route path='/login' element={<Login />} />
                         <Route path='/add/CURR' element={<AddForm timing={'CURR'} />} />
                         <Route path='/add/NEXT' element={<AddForm timing={'NEXT'} />} />
                         <Route path='/add/PREV' element={<AddForm timing={'PREV'} />} />
                         <Route path='/edit/NEXT/*' element={<EditEvents timing={'NEXT'} />} />
-                        <Route path='/edit/CURR/*' element={<EditEvents timing={'CURR'}/>} />
+                        <Route path='/edit/CURR/*' element={<EditEvents timing={'CURR'} />} />
                     </Routes>
                 </div>
 
@@ -56,4 +71,4 @@ function layout() {
     )
 }
 
-export default layout
+export default Layout
