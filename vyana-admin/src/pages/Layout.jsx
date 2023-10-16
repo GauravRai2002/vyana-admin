@@ -37,7 +37,7 @@ function Layout() {
                     </div>
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal">
-                            <button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>
+                            {localStorage.getItem('uid')?<button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>:<></>}
 
                         </ul>
                     </div>
@@ -60,9 +60,8 @@ function Layout() {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200">
-                    {/* Sidebar content here */}
-                    <li><Link to={'/'}>Event</Link></li>
-                    <li><Link to={'/matches'}>Matches</Link></li>
+                    
+                    <li>{localStorage.getItem('uid')?<button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>:<></>}</li>
 
                 </ul>
 

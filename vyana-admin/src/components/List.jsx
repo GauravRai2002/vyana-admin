@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import TimeComp from './TimeComp'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function List() {
+    const navigate = useNavigate()
     const [allData, setAllData] = useState([])
     useEffect(() => {
+        if (!localStorage.getItem('uid')) {
+            navigate('/login')
+        }
         fetch('https://vyana-sports-back-end.vercel.app/events').then(res => res.json()).then(result => setAllData(result))
     }, [])
 
