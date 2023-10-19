@@ -48,10 +48,11 @@ function AddForm({ timing }) {
                         return resp.json()
                     }).then(data => {
                         imageSource = data.res
+                        uploadImages()
                     })
         }
         console.log(video)
-        uploadImages()
+        
 
 
 
