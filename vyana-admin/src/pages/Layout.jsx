@@ -7,6 +7,7 @@ import List from '../components/List'
 import EditEvents from '../components/EditEvents'
 import Login from '../Login'
 import { auth } from '../firebase'
+import AddPhotos from '../components/AddPhotos'
 
 function Layout() {
     const navigate = useNavigate()
@@ -53,6 +54,7 @@ function Layout() {
                         <Route path='/add/PREV' element={<AddForm timing={'PREV'} />} />
                         <Route path='/edit/NEXT/*' element={<EditEvents timing={'NEXT'} />} />
                         <Route path='/edit/CURR/*' element={<EditEvents timing={'CURR'} />} />
+                        <Route path='/add/photos/*' element={<AddPhotos/>} />
                     </Routes>
                 </div>
 

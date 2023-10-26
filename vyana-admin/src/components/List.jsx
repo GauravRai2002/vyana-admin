@@ -6,7 +6,8 @@ function List() {
     const navigate = useNavigate()
     const [allData, setAllData] = useState([])
     useEffect(() => {
-        if (!localStorage.getItem('uid')) {
+        if (localStorage.getItem('uuid')) {
+            console.log('not signed in')
             navigate('/login')
         }
         fetch('https://vyana-sports-back-end.vercel.app/events').then(res => res.json()).then(result => setAllData(result))
