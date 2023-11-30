@@ -1,46 +1,62 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Compressor from 'compressorjs';
+import logo from '../assets/logo.png'
+// import { watermark } from 'purejswatermark/dist/watermark';
+// import watermark from 'purejswatermark'
 
 function AddPhotos() {
     const [eid, setEid] = useState()
     const photoRef = useRef()
-    var formData = new FormData()
+    // var formData = new FormData()
     const [loading, setLoading] = useState(0)
     const progressRef = useRef()
-    
-    const handleAddPhotos = (e) => {
-        
+
+    const handleAddPhotos = async(e) => {
+
         e.preventDefault()
         const count = photoRef.current.files.length
         var counter = 0
         progressRef.current.classList.remove('hidden')
         progressRef.current.classList.add('block')
         for (var i = 0; i < count; i++) {
-            formData.append("images", photoRef.current.files[i])
-            try {
-                fetch(`https://vyana-index.onrender.com/indexFaces/${eid}`, {
-                    method: 'POST',
-                    body: formData
-                }).then(resp => {
-                    return resp.json()
-                }).then((res) => {
-                    // console.log(res)
-                    counter++
 
-                    const percentage = (counter/count)*100
-                    setLoading(percentage)
-                    console.log(counter)
-                })
-            } catch (e) {
-                console.log(e.message)
-            }
-            formData.delete('images');
+            new Compressor(photoRef.current.files[i], {
+                quality: 0.6,
+                async success(result) {
+                    const formData = new FormData();
+                    formData.append('images', result);
+                    for (const values of formData) {
+                        console.log(values)
+                    }
+                    try {
+                        fetch(`http://195.35.45.206:5000/indexFaces/${eid}`, {
+                            method: 'POST',
+                            body: formData
+                        }).then(resp => {
+                            return resp.json()
+                        }).then((res) => {
+                            console.log(res)
+                            counter++
+
+                            const percentage = (counter / count) * 100
+                            setLoading(percentage)
+                            console.log(counter)
+                        })
+                    } catch (e) {
+                        console.log(e.message)
+                    }
+                },
+                error(err) {
+                    console.log(err.message);
+                },
+            });
         }
 
-        
 
 
 
-        
+
+
 
 
     }
