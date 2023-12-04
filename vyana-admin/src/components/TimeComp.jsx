@@ -3,12 +3,12 @@ import skele from '../assets/skeleton.png'
 import { Link } from 'react-router-dom'
 
 function TimeComp({ imageurl, e_name, e_id, timing }) {
-    const moveToCurrentHandler = ()=>{
+    const moveToCurrentHandler = () => {
 
     }
 
-    const moveToPrevHandler = ()=>{
-        
+    const moveToPrevHandler = () => {
+
     }
     return (
         <>
@@ -23,8 +23,11 @@ function TimeComp({ imageurl, e_name, e_id, timing }) {
                     {timing == 'NEXT' ? <div className="card-actions ">
                         <button onClick={moveToCurrentHandler} className="btn btn-alert btn-outline">Move to CURR</button>
                     </div> : <></>}
-                    {timing!='PREV'?<Link className='' to={`/edit/${timing}/${e_id}`} ><button className="btn btn-warning btn-outline">EDIT</button></Link>:<></>}
-                    <Link className='' to={`/add/photos/${e_id}`} ><button className="btn btn-warning btn-outline">ADD PHOTOS</button></Link>
+                    <div className='flex flex-wrap gap-2'>
+                        <Link className='block w-fit' to={`/add/photos/${e_id}`} ><button className="btn btn-warning btn-outline">ADD PHOTOS</button></Link>
+                        <Link className='block w-fit' to={`/add/videos/${e_id}`} ><button className="btn btn-success btn-outline">ADD VIDEOS</button></Link>
+                        <Link className='block w-fit' to={`/add/teams/${e_id}`} ><button className="btn btn-info btn-outline">ADD TEAMS</button></Link>
+                    </div>
                 </div>
             </div>
         </>

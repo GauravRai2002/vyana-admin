@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function AddForm({ timing }) {
     const navigate = useNavigate()
     const nameRef = useRef()
-    const videoRef = useRef()
     var imageSource
     const photoRef = useRef();
     const scheduleRef = useRef();
@@ -18,15 +17,6 @@ function AddForm({ timing }) {
     var results
     var schedule
     var rules
-
-
-
-    const handleVideoAdd = (e) => {
-        e.preventDefault()
-        video.push(videoRef.current.value)
-        videoRef.current.value = ''
-        console.log(video)
-    }
 
 
     const handleSubmit = (e) => {
@@ -187,7 +177,6 @@ function AddForm({ timing }) {
             'rules': rules,
             'schedule': schedule,
             'result': results,
-            'videos': video
         }
         try {
             fetch(`https://vyana-sports-back-end.vercel.app/add/events`, {
@@ -276,24 +265,6 @@ function AddForm({ timing }) {
                         </label>
                         <input ref={rulesRef} type="file" accept="image/png, image/jpeg" className="file-input file-input-bordered file-input-accent w-full max-w-xs" multiple />
                     </div>
-
-                </div>
-
-                <div className='area flex-col md:flex-row flex w-full items-center justify-center gap-6 h-fit px-9'>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Video Id :</span>
-                        </label>
-                        <input ref={videoRef} type="text" placeholder="Type here" className="input input-bordered w-full" />
-                    </div>
-
-                    <div className="form-control w-full">
-
-                        <div className="button flex items-center mt-8 justify-center w-full">
-                            <button onClick={handleVideoAdd} type='submit' className="btn btn-accent px-8">Add</button>
-                        </div>
-                    </div>
-
 
                 </div>
 

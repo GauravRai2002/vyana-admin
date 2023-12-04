@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Compressor from 'compressorjs';
-import logo from '../assets/logo.png'
-// import { watermark } from 'purejswatermark/dist/watermark';
-// import watermark from 'purejswatermark'
 
 function AddPhotos() {
     const [eid, setEid] = useState()
     const photoRef = useRef()
-    // var formData = new FormData()
     const [loading, setLoading] = useState(0)
     const progressRef = useRef()
 
-    const handleAddPhotos = async(e) => {
+    const handleAddPhotos = async (e) => {
 
         e.preventDefault()
         const count = photoRef.current.files.length
@@ -37,7 +33,6 @@ function AddPhotos() {
                         }).then((res) => {
                             console.log(res)
                             counter++
-
                             const percentage = (counter / count) * 100
                             setLoading(percentage)
                             console.log(counter)
@@ -51,14 +46,6 @@ function AddPhotos() {
                 },
             });
         }
-
-
-
-
-
-
-
-
     }
 
 

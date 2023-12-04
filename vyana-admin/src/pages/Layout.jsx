@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import AddForm from '../components/AddForm'
 import logo from '../assets/logo.png'
-import TimeComp from '../components/TimeComp'
 import List from '../components/List'
-import EditEvents from '../components/EditEvents'
 import Login from '../Login'
 import { auth } from '../firebase'
 import AddPhotos from '../components/AddPhotos'
+import AddVideos from '../components/AddVideos'
+import AddTeams from '../components/AddTeams'
 
 function Layout() {
     const navigate = useNavigate()
@@ -45,16 +45,13 @@ function Layout() {
                 </div>
                 {/* Page content here */}
                 <div className="w-full md:w-5/6 mx-auto">
-
                     <Routes>
                         <Route path='/' element={<List />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/add/CURR' element={<AddForm timing={'CURR'} />} />
-                        <Route path='/add/NEXT' element={<AddForm timing={'NEXT'} />} />
                         <Route path='/add/PREV' element={<AddForm timing={'PREV'} />} />
-                        <Route path='/edit/NEXT/*' element={<EditEvents timing={'NEXT'} />} />
-                        <Route path='/edit/CURR/*' element={<EditEvents timing={'CURR'} />} />
                         <Route path='/add/photos/*' element={<AddPhotos/>} />
+                        <Route path='/add/videos/*' element={<AddVideos/>} />
+                        <Route path='/add/teams/*' element={<AddTeams/>} />
                     </Routes>
                 </div>
 
