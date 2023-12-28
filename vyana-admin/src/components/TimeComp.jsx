@@ -27,6 +27,7 @@ function TimeComp({ imageurl, e_name, e_id, timing }) {
                         <Link className='block w-fit' to={`/add/photos/${e_id}`} ><button className="btn btn-warning btn-outline">ADD PHOTOS</button></Link>
                         <Link className='block w-fit' to={`/add/videos/${e_id}`} ><button className="btn btn-success btn-outline">ADD VIDEOS</button></Link>
                         <Link className='block w-fit' to={`/add/teams/${e_id}`} ><button className="btn btn-info btn-outline">ADD TEAMS</button></Link>
+                        <Link className='block w-fit' to={`/add/link/${e_id}`} ><button className="btn btn-info btn-outline">ADD LINK</button></Link>
                     </div>
                 </div>
             </div>

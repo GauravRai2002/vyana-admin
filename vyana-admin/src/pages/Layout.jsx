@@ -8,6 +8,7 @@ import { auth } from '../firebase'
 import AddPhotos from '../components/AddPhotos'
 import AddVideos from '../components/AddVideos'
 import AddTeams from '../components/AddTeams'
+import AddLink from '../components/AddLink'
 
 function Layout() {
     const navigate = useNavigate()
@@ -52,6 +53,7 @@ function Layout() {
                         <Route path='/add/photos/*' element={<AddPhotos/>} />
                         <Route path='/add/videos/*' element={<AddVideos/>} />
                         <Route path='/add/teams/*' element={<AddTeams/>} />
+                        <Route path='/add/link/*' element={<AddLink/>} />
                     </Routes>
                 </div>
 
