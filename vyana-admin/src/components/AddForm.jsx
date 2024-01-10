@@ -27,11 +27,12 @@ function AddForm({ timing }) {
         const imgdata = new FileReader()
         imgdata.readAsDataURL(photoRef.current.files[0])
         imgdata.onloadend = () => {
-            fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
+            fetch(`https://vyana-sports-back-end-git-main-gauravrai2002.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'Access-Control-Allow-Origin':'*'
                         },
                         body: JSON.stringify({ data: imgdata.result })
                     }).then(resp => {
@@ -83,11 +84,12 @@ function AddForm({ timing }) {
             let fileReader2 = new FileReader();
             fileReader2.onloadend = function () {
                 try {
-                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
+                    fetch(`https://vyana-sports-back-end-git-main-gauravrai2002.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'Access-Control-Allow-Origin':'*'
                         },
                         body: JSON.stringify({ data: fileReader2.result })
                     }).then(resp => {
@@ -114,11 +116,12 @@ function AddForm({ timing }) {
             let fileReader1 = new FileReader();
             fileReader1.onloadend = function () {
                 try {
-                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
+                    fetch(`https://vyana-sports-back-end-git-main-gauravrai2002.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'Access-Control-Allow-Origin':'*'
                         },
                         body: JSON.stringify({ data: fileReader1.result })
                     }).then(resp => {
@@ -144,11 +147,12 @@ function AddForm({ timing }) {
             let fileReader = new FileReader();
             fileReader.onloadend = function () {
                 try {
-                    fetch(`https://vyana-sports-back-end.vercel.app/upload`, {
+                    fetch(`https://vyana-sports-back-end-git-main-gauravrai2002.vercel.app/upload`, {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'Access-Control-Allow-Origin':'*'
                         },
                         body: JSON.stringify({ data: fileReader.result })
                     }).then(resp => {
@@ -179,11 +183,12 @@ function AddForm({ timing }) {
             'result': results,
         }
         try {
-            fetch(`https://vyana-sports-back-end.vercel.app/add/events`, {
+            fetch(`https://vyana-sports-back-end-git-main-gauravrai2002.vercel.app/add/events`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'Access-Control-Allow-Origin':'*'
                 },
                 body: JSON.stringify(data)
             }).then(res => {

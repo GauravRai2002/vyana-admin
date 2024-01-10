@@ -26,6 +26,7 @@ function AddPhotos() {
                     }
                     try {
                         fetch(`http://195.35.45.206:5000/indexFaces/${eid}`, {
+                            
                             method: 'POST',
                             body: formData
                         }).then(resp => {
