@@ -25,7 +25,7 @@ function AddPhotos() {
                         console.log(values)
                     }
                     try {
-                        fetch(`http://195.35.45.206:5000/indexFaces/${eid}`, {
+                        fetch(`https://195.35.45.206:5000/indexFaces/${eid}`, {
                             
                             method: 'POST',
                             body: formData
